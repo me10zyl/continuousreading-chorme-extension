@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+  "name": "ContinuousReading",
+  "short_name": "ContinuousReading",
+  "description": "",
+  "version": "1.0",
+  "minimum_chrome_version": "38",
+
+  "icons": {
+    "16": "assets/icon_16.png",
+    "32" : "assets/icon_32.png",
+    "128": "assets/icon_128.png"
+  },
+    "browser_action": {
+    "default_icon": "assets/icon_16.png",
+    "default_popup" : "popup.html",
+    "default_title" : "Continue reading with your mobile!"
+  }
+  , "homepage_url": "http://www.baidu.com/",
+   "background": {
+    "scripts": ["background.js"],
+    "persistence" : false
+  },
+  "permissions" : ["http://*/*", "https://*/*","tabs","storage"]
+}
