@@ -87,6 +87,28 @@ function loginOrRegister(addr,username,password)
 		      chrome.tabs.query({"active" : true}, function(tab){
 		         $("#url").text(tab[0].url);
       });
+      $("#user_to_send").ready(function(){
+           $("#send").click(function(){
+          $("#send").attr("disabled","true");
+        var id = $("#user_to_send").data('id');
+        var addr = "http://localhost:8080/continuousreading/android/url/add";
+        if(profile === PROFILE[1])
+        {
+             addr = "http://zyl-me.xicp.net:1234/continuousreading/android/url/add";
+        }
+        $.post(addr,{"url" : $("#url").text(), "userid" : id}, function(res){
+                $("#information").slideDown();
+                $("#information").text(res.message);
+                 if(res.success)
+                 {
+                   $("#information").css({"color":"green"});
+                   $("#send").removeAttr("disabled");
+                 }else{
+                   $("#information").css({"color":"red"});
+                 }
+        });
+      });
+      });
 		  });
 		  });
 }
